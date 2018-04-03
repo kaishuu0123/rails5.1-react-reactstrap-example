@@ -1,0 +1,11 @@
+{
+    // タブ 1 つに相当するスペースの数。
+    "editor.tabSize": 2,
+
+    // 有効にすると、ファイルの保存時に末尾の空白をトリミングします。
+    "files.trimTrailingWhitespace": true,
+    //  or "ruby.rubocop.executePath": "/Users/you/.rbenv/shims/"
+    // if not specified searches for 'rubocop' executable available on PATH
+    "ruby.rubocop.executePath": ".bundle/bin/",
+    "git.ignoreLimitWarning": true
+}

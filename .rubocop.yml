@@ -1,0 +1,77 @@
+# Based on http://rubocop.readthedocs.io/en/latest/configuration/#includingexcluding-files
+# AllCops: Include: と Exclude: は設定してしまうとdefault.ymlの設定値が飛んでしまうので、
+# default.yml で定義されている内容もこちらで再定義する
+Rails:
+  Enabled: true
+Style/AsciiComments:
+  Enabled: false
+# XXX: FrozenStringLiteralComment はファイル数が多くノイズになってしまっているため、現段階では無効にしておく
+#      Ruby 3.0 に上げる段階では必ず有効化する
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/SignalException:
+  Enabled: false  # raise か failか強制。あまりタイトにしたくないので無効にした
+# spec ファイルは 1ブロックが長くなるので対象から除外する
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+AllCops:
+  Include:
+# from default.yml
+    - '**/*.builder'
+    - '**/*.fcgi'
+    - '**/*.gemspec'
+    - '**/*.god'
+    - '**/*.jb'
+    - '**/*.jbuilder'
+    - '**/*.mspec'
+    - '**/*.opal'
+    - '**/*.pluginspec'
+    - '**/*.podspec'
+    - '**/*.rabl'
+    - '**/*.rake'
+    - '**/*.rbuild'
+    - '**/*.rbw'
+    - '**/*.rbx'
+    - '**/*.ru'
+    - '**/*.ruby'
+    - '**/*.spec'
+    - '**/*.thor'
+    - '**/*.watchr'
+    - '**/.irbrc'
+    - '**/.pryrc'
+    - '**/buildfile'
+    - '**/config.ru'
+    - '**/Appraisals'
+    - '**/Berksfile'
+    - '**/Brewfile'
+    - '**/Buildfile'
+    - '**/Capfile'
+    - '**/Cheffile'
+    - '**/Dangerfile'
+    - '**/Deliverfile'
+    - '**/Fastfile'
+    - '**/*Fastfile'
+    - '**/Gemfile'
+    - '**/Guardfile'
+    - '**/Jarfile'
+    - '**/Mavenfile'
+    - '**/Podfile'
+    - '**/Puppetfile'
+    - '**/Rakefile'
+    - '**/Snapfile'
+    - '**/Thorfile'
+    - '**/Vagabondfile'
+    - '**/Vagrantfile'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - '.bundle/**/*'
+    - '.vscode/**/*'
+    - 'misc/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+# from default.yml
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+inherit_from: .rubocop_todo.yml
