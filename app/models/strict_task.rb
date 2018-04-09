@@ -1,0 +1,2 @@
+class StrictTask < ApplicationRecord
+end

@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   namespace :api, {format: 'json'} do
     namespace :v1 do
       resources :tasks
+      resources :strict_tasks
+
+      resources :users, only: [:create]
+      resource :auths, only: [:create]
+
+      post 'register' => 'users#create'
+      post 'login' => 'auths#create'
     end
   end
 
