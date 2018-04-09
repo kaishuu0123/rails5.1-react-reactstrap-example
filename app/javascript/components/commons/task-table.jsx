@@ -11,7 +11,7 @@ class TaskTable extends React.Component {
   }
 
   render() {
-    const { tasks, getTasks } = this.props;
+    const { tasks, getTasks, deleteTask } = this.props;
 
     return (
       <Table className="mt-sm-4">
@@ -31,6 +31,7 @@ class TaskTable extends React.Component {
                 title={task.title}
                 description={task.description}
                 getTasks={getTasks}
+                deleteTask={deleteTask}
               />);
           }.bind(this))}
         </tbody>
