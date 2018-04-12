@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 
 import Header from './header';
+import styles from './hr';
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -78,7 +79,9 @@ class LoginComponent extends React.Component {
                   }}
                 />
               </FormGroup>
-              <Button>Login</Button>
+              <Button className="col-md-12">Login</Button>
+              <hr className={styles.hrText} data-content="OR" />
+              <Button href='/oauth/twitter' className="col-md-12"> Sign in with Twitter</Button>
             </Form>
           </Card>
         </Container>

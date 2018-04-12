@@ -1,6 +1,9 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { Container, Row, Col } from 'reactstrap';
+import queryString from 'query-string';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 
 import Header from './header';
 import TaskForm from './commons/task-form';
@@ -22,6 +25,10 @@ class TaskPageComponent extends React.Component {
   }
 
   componentDidMount() {
+    let tokens = queryString.parse(get(this, "props.location.search"));
+    if (!isEmpty(tokens)) {
+      localStorage.setItem('access_token', tokens.access_token)
+    }
     this.getTasks();
   }
 

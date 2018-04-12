@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
+  end
 
   attribute :password, :string
   attribute :password_confirmation, :string
@@ -9,4 +11,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
+
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 end
